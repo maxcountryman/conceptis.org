@@ -55,8 +55,8 @@ def logout():
     deauth_user()
     return redirect(url_for('index'))
 
-@app.route('/register', methods=['GET', 'POST'])
 @whitelist
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     
     if session.get('logged_in'):
