@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}{{ user.username }}'s Profile | {% endblock %}
+
+{% block body %}
+{% if not session['username'] == user.username and not username %}
+<h2>{{ user.username }}'s Profile</h2>
+{% elif session.logged_in and session['username'] == user.username %}
+
+<div class="grid">
+    <div class="span16">
+        <div class="form-style">
+            <h2>Account Settings</h2>
+            <p><small>Your current password is required to make changes</small></p>
+            {% from "macros.html" import with_errors %}
+            <form method="post" action="">
+                {{ with_errors(form.email, class='text-input') }}
+                {{ with_errors(form.old_pass, class='text-input') }}
+                {{ with_errors(form.pass_one, class='text-input') }}
+                {{ with_errors(form.pass_two, class='text-input') }}
+                <input class="button" type="submit" value="Update">        
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+            </form>
+            <form method="delete" action="">
+                <span style="float:right"><small><a class="delete-user" href="{{ url_for('user', id=session.username) }}">Delete Account</a></small></span>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+{% block extra_script %}
+<script>
+    $(document).ready(function() {
+        $('a.delete-account').confirm({
+            timeout:7000,
+            dialogShow:'fadeIn',
+            dialogSpeed:'slow',
+            buttons: {
+                wrapper:'<button></button>',
+                separator:'  '
+            }  
+        });
+    });
+</script>
+{% endblock %}
