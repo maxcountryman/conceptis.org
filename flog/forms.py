@@ -5,7 +5,7 @@ from wtforms import (Form, TextField, TextAreaField, PasswordField,
 
 optional = [validators.Optional()]
 required = [validators.Required()]
-username_validators = [validators.Length(min=6, max=28)]
+username_validators = [validators.Length(min=3, max=28)]
 email_validators = [validators.Length(min=6, max=35), validators.Email()]
 pass_validators = [
                 validators.Required(),
