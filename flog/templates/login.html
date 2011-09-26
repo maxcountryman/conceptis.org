@@ -10,8 +10,8 @@
     {% from "macros.html" import with_errors %}
     <form method="post" action="">
         <h2>Sign In</h2>
-        {{ with_errors(form.username, extra_label='<small><a title=\'Register with a new account\' href=\'/register\'>Sign up here</a>!</small>', class='text-input', placeholder='foobar', spellcheck='false') }} 
-        {{ with_errors(form.password, extra_label='<small><a title=\'Click here to reset your password\' href=\'/reset\'>Forgotten password?</a></small>', class='text-input') }}
+        {{ with_errors(form.username, class='text-input', placeholder='foobar', spellcheck='false') }} 
+        {{ with_errors(form.password, class='text-input') }}
         <input class="submit-button" type="submit" value="Login">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
     </form>
