@@ -719,7 +719,7 @@ section {
   background: #ffffff;
   font-size: 17px;
   color: #333333;
-  line-height: 2em;
+  line-height: 1.2em;
   word-spacing: 0.1em;
   padding-top: 20px;
   padding-bottom: 150px;
@@ -752,6 +752,7 @@ section h3 {
 }
 section .post {
   font-size: 18px;
+  width: 640px;
 }
 section .post h1 a {
   color: #262626;
